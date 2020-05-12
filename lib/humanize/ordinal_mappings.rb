@@ -1,0 +1,19 @@
+ordinal_mappings = {
+  'one' => 'first',
+  'two' => 'second',
+  'three' => 'third',
+  'four' => 'fourth',
+  'five' => 'fifth',
+  'six' => 'sixth',
+  'seven' => 'seventh',
+  'eight' => 'eighth',
+  'nine' => 'ninth',
+  'ten' => 'tenth',
+  'eleven' => 'eleventh',
+  'twelve' => 'twelfth',
+  'teen' => 'teenth',
+  'ty' => 'tieth',
+  'hundred' => 'hundredth',
+  'illion' => 'illionth',
+  'infinity' => 'infinite'
+}

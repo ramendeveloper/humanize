@@ -7,7 +7,8 @@ module Humanize
   # Big numbers are big: http://wiki.answers.com/Q/What_number_is_after_vigintillion&src=ansTT
 
   def humanize(locale: Humanize.config.default_locale,
-               decimals_as: Humanize.config.decimals_as)
+               decimals_as: Humanize.config.decimals_as,
+               ordinal: Humanize.config.ordinal)
     locale_class, spacer = Humanize.for_locale(locale)
 
     return locale_class::SUB_ONE_GROUPING[0] if zero?
@@ -29,7 +30,7 @@ module Humanize
 
   def self.for_locale(locale)
     case locale.to_sym
-    # NOTE: add locales here in ealphabetical order
+    # NOTE: add locales here in alphabetical order
     when :az, :de, :en, :es, :fr, :id, :ms, :pt, :ru
       [Object.const_get("Humanize::#{locale.capitalize}"), SPACE]
     when :th
@@ -52,6 +53,12 @@ module Humanize
     else
       output
     end
+  end
+
+  def ordinalise(stringified_string, ordinal)
+    return stringified_string unless ordinal
+
+
   end
 
   def self.locale_is?(locale)
@@ -107,11 +114,12 @@ module Humanize
   end
 
   class Configuration
-    attr_accessor :default_locale, :decimals_as
+    attr_accessor :default_locale, :decimals_as, :ordinal
 
     def initialize
       @default_locale = :en
       @decimals_as = :digits
+      @ordinal = false
     end
   end
 end

@@ -146,4 +146,13 @@ RSpec.describe "Humanize" do
       expect(BigDecimal('123.45').humanize).to eql('one hundred and twenty-three point four five')
     end
   end
+
+  describe 'when ordinal as option is enabled' do
+    it 'reads the number in ordinal form' do
+      expect(123.humanize(ordinal: true)).to eql('one hundred and twenty third')
+      expect(30.humanize(ordinal: true)).to eql('thirtieth')
+      expect(15.humanize(ordinal: true)).to eql('fifteenth')
+      expect(100.humanize(ordinal: true)).to eql('hundredth')
+    end
+  end
 end
